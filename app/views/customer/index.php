@@ -76,6 +76,13 @@
                         </div>
 
                         <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <label class="input-group-text" for="tanggal_kembali">Tanggal Kembali</label>
+                            </div>
+                            <input type="date" name="tanggal_kembali" id="tanggal_kembali" class="form-control" placeholder="Pilih Tanggal Kembali" aria-label="tanggal" required>
+                        </div>
+
+                        <div class="input-group mb-3">
                             <div class="custom-file">
                                 <input type="file" class="custom-file-input" id="upload"
                                 aria-describedby="upload">
