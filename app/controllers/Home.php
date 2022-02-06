@@ -12,6 +12,7 @@ class Home extends Controller {
 	public function index()
 	{
 		$data['title'] = 'Halaman Home';
+		$data['username'] = $_COOKIE['username'];
 
 		$this->view('templates/header', $data);
 		$this->view('templates/sidebar', $data);

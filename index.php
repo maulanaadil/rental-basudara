@@ -35,21 +35,21 @@
                         <div class="input-group-prepend">
                             <label class="input-group-text" for="nama">Nama</label>
                         </div>
-                        <input type="text" name="nama" id="nama" class="form-control" placeholder="Masukan nama" aria-label="nama">
+                        <input type="text" name="nama" id="nama" class="form-control" placeholder="Masukan nama" aria-label="nama" required>
                     </div>
                     
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <label class="input-group-text" for="no-hp">No Handphone</label>
                         </div>
-                        <input type="tel" name="no-hp" id="no-hp" class="form-control" placeholder="Masukan no hanphone" aria-label="no-hp">
+                        <input type="tel" name="no-hp" id="no-hp" class="form-control" placeholder="Masukan no handphone" aria-label="no-hp" required>
                     </div>
 
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <label class="input-group-text" for="email">Email</label>
                         </div>
-                        <input type="email" name="email" id="email" class="form-control" placeholder="Masukan email" aria-label="email">
+                        <input type="email" name="email" id="email" class="form-control" placeholder="Masukan email" aria-label="email" required>
                     </div>
 
                     <div class="input-group mb-3">
@@ -68,7 +68,7 @@
                         <div class="input-group-prepend">
                             <label class="input-group-text" for="tanggal">Tanggal Sewa</label>
                         </div>
-                        <input type="date" name="tanggal" id="tanggal" class="form-control" placeholder="Pilih Tanggal" aria-label="tanggal">
+                        <input type="date" name="tanggal" id="tanggal" class="form-control" placeholder="Pilih Tanggal" aria-label="tanggal" required>
                     </div>
                     <div class="d-inline float-right">
                         <input type="reset" class="btn btn-outline btn-danger">

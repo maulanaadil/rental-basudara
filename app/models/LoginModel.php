@@ -2,7 +2,7 @@
 
 class LoginModel {
 	
-	private $table = 'user';
+	private $table = 'pegawai';
 	private $db;
 
 	public function __construct()
@@ -12,7 +12,7 @@ class LoginModel {
 
 	public function checkLogin($data)
 	{
-		$query = "SELECT * FROM pegawai WHERE username = :username AND password = :password";
+		$query = 'SELECT * FROM ' .$this->table. ' WHERE username = :username AND password = :password';
 		$this->db->query($query);
 		$this->db->bind('username', $data['username']);
 		$this->db->bind('password', md5($data['password']));
