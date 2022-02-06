@@ -34,7 +34,7 @@
         <div class="row justify-content-center">
             <div class="card">
                 <div class="card-body">
-                    <form action="#" method="post">
+                    <form action="<?= base_url; ?>/customer/simpancustomer" method="POST" enctype="multipart/form-data">
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <label class="input-group-text" for="nama">Nama</label>
@@ -44,9 +44,9 @@
 
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
-                                <label class="input-group-text" for="no-hp">No Handphone</label>
+                                <label class="input-group-text" for="no_hp">No Handphone</label>
                             </div>
-                            <input type="tel" name="no-hp" id="no-hp" class="form-control" placeholder="Masukan no handphone" aria-label="no-hp" required>
+                            <input type="tel" name="no_hp" id="no_hp" class="form-control" placeholder="Masukan no handphone" aria-label="no-hp" required>
                         </div>
 
                         <div class="input-group mb-3">
@@ -74,6 +74,15 @@
                             </div>
                             <input type="date" name="tanggal" id="tanggal" class="form-control" placeholder="Pilih Tanggal" aria-label="tanggal" required>
                         </div>
+
+                        <div class="input-group mb-3">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="upload"
+                                aria-describedby="upload">
+                                <label class="custom-file-label" for="inputGroupFile01">Upload Bukti Pembayaran</label>
+                            </div>
+                        </div>
+
                         <div class="d-inline float-right">
                             <input type="reset" class="btn btn-outline btn-danger">
                             <input type="submit" class="btn btn-primary">

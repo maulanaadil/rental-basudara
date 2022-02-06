@@ -13,9 +13,7 @@ class Login extends Controller
 	{
 		if ($this->model('LoginModel')->checkLogin($_POST) > 0) {
 			$data = $this->model('LoginModel')->checkLogin($_POST);
-			setcookie('username',  $data['username'], array(
-				'path' => '/'
-			));
+			setcookie('username',  $data['username']);
 			$_SESSION['session_login'] = 'sudah_login';
 			//$this->model('LoginModel')->isLoggedIn($_SESSION['session_login']);
 
