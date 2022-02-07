@@ -84,7 +84,7 @@
 
                         <div class="input-group mb-3">
                             <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="upload"
+                                <input type="file" class="custom-file-input" id="upload" name="bukti_pembayaran" required
                                 aria-describedby="upload">
                                 <label class="custom-file-label" for="inputGroupFile01">Upload Bukti Pembayaran</label>
                             </div>

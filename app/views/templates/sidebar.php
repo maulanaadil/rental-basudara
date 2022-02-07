@@ -2,18 +2,14 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="#" class="brand-link">
-      <span class="brand-text font-weight-light">Buku Kita</span>
+      <span class="brand-text font-weight-light">Rental Basudara</span>
     </a>
 
     <!-- Sidebar -->
     <div class="sidebar">
-
-      <!-- Sidebar Menu -->
-      <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-          <li class="nav-item">
+       <nav class="mt-2">
+         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+           <li class="nav-item">
             <a href="<?= base_url; ?>/home" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
@@ -22,39 +18,51 @@
             </a>
           </li>
           <li class="nav-header">Data</li>
+      <?php
+      
+      if ($_COOKIE['username'] == 'admin') {
+        ?>
           <li class="nav-item">
-            <a href="<?= base_url; ?>/kategori" class="nav-link">
+            <a href="<?= base_url; ?>/transaksi" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
-                Kategori
+                Transaksi
+              </p>
+            </a>
+          </li>
+           <li class="nav-item">
+            <a href="<?= base_url; ?>/playstation" class="nav-link">
+              <i class="nav-icon fas fa-gamepad"></i>
+              <p>
+                Playstation
+              </p>
+            </a>
+          </li>
+
+        <?php
+      } else 
+      if ($_COOKIE['username'] == 'penjaga') {
+        ?>
+          <li class="nav-item">
+            <a href="<?= base_url; ?>/peminjaman" class="nav-link">
+              <i class="nav-icon fas fa-user"></i>
+              <p>
+                Peminjaman
               </p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="<?= base_url; ?>/buku" class="nav-link">
+            <a href="<?= base_url; ?>/pengembalian" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
-                Buku
+                Pengembalian
               </p>
             </a>
           </li>
-          <li class="nav-item">
-            <a href="<?= base_url; ?>/user" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
-              <p>
-                User
-              </p>
-            </a>
-          </li>
-          <li class="nav-header">Extra</li>
-          <li class="nav-item">
-            <a href="<?= base_url; ?>/about" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
-              <p>
-                About Me
-              </p>
-            </a>
-          </li>
+        <?php
+      }
+
+      ?>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

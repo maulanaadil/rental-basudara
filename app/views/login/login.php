@@ -22,7 +22,7 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <b>Bu</b>Kita
+    <b>Rental</b><br>Basudara
   </div>
   <!-- /.login-logo -->
   <div class="card">
@@ -48,9 +48,7 @@
         </div>
         <div class="row">
           <!-- /.col -->
-          <div class="col-4">
             <button type="submit" class="btn btn-primary btn-block">Sign In</button>
-          </div>
           <!-- /.col -->
         </div>
       </form>

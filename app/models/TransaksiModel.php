@@ -55,7 +55,7 @@ class TransaksiModel
 		$this->db->bind('tgl_pinjam', $data['tanggal']);
 		$this->db->bind('tgl_kembali', $data['tanggal_kembali']);
 		$this->db->bind('total', $bedaTanggal * $harga);
-		$this->db->bind('status_transaksi', NULL);
+		$this->db->bind('status_transaksi', 'pending');
 		$this->db->bind('denda', 0);
 		$this->db->execute();
 

@@ -1,10 +1,9 @@
 
   <footer class="main-footer">
     <div class="float-right d-none d-sm-block">
-      <b>Version</b> 1.0.0
+      <p>Copyright &copy;2022 Rental Basudara All rights
+      reserved.</p>
     </div>
-    <strong>Copyright &copy;2019 Bukita All rights
-    reserved.
   </footer>
 
 </div>
