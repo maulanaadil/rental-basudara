@@ -32,7 +32,7 @@
             </div>
             <div class="form-group">
               <label>Harga</label>
-              <input type="nummber" class="form-control" name="harga" value="<?= $data['playstation']['harga']; ?>">
+              <input type="number" class="form-control" name="harga" value="<?= $data['playstation']['harga']; ?>">
             </div>
             <div class="form-group">
               <label>Status Peminjaman</label>
