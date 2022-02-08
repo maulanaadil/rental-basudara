@@ -16,7 +16,11 @@ class TransaksiModel
 
 	public function getAllTransaksi()
 	{
-		$this->db->query('SELECT * FROM ' . $this->table);
+		// $this->db->query('SELECT * FROM ' . $this->table);
+		$this->db->query("SELECT transaksi.transaksi_id, transaksi.tanggal_pinjam, transaksi.tanggal_kembali, transaksi.total, transaksi.status_transaksi, transaksi.bukti_pembayaran, transaksi.total, customer.nama, customer.email, playstation.jenis
+		FROM transaksi
+		INNER JOIN customer ON transaksi.customer_id = customer.customer_id
+		INNER JOIN playstation ON transaksi.ps_id = playstation.ps_id");
 		return $this->db->resultSet();
 	}
 
@@ -44,21 +48,42 @@ class TransaksiModel
 		} else {
 			$res_ps = $this->playstation->getPlaystationById($ps_id['ps_id']);
 			$harga = $res_ps['harga'];
-			$this->playstation->setPlaystationStatusPeminjaman($ps_id, "dipinjam");
+			$this->playstation->setPlaystationStatusPeminjaman($ps_id["ps_id"], "dipinjam");
 		}
 
 		$query = "INSERT INTO `rental_basudara`.`transaksi` (`customer_id`, `ps_id`, `pegawai_id`, `tanggal_pinjam`, `tanggal_kembali`, `total`, `status_transaksi`, `denda`) VALUES (:customer_id, :ps_id, :pegawai_id, :tgl_pinjam, :tgl_kembali, :total, :status_transaksi, :denda)";
 		$this->db->query($query);
 		$this->db->bind('customer_id', $data['customer_id']);
-		$this->db->bind('ps_id', 'P1');
+		$this->db->bind('ps_id', $ps_id['ps_id']);
 		$this->db->bind('pegawai_id', 'A1');
 		$this->db->bind('tgl_pinjam', $data['tanggal']);
 		$this->db->bind('tgl_kembali', $data['tanggal_kembali']);
 		$this->db->bind('total', $bedaTanggal * $harga);
-		$this->db->bind('status_transaksi', 'pending');
+		$this->db->bind('status_transaksi', NULL);
 		$this->db->bind('denda', 0);
 		$this->db->execute();
 
 		return $this->db->single();
+	}
+
+	public function updateDataTransaksiAccept($transaksi_id)
+	{
+		$query = "UPDATE transaksi SET status_transaksi = :status_trans WHERE transaksi_id = :id";
+		$this->db->query($query);
+		$this->db->bind("status_trans", "success");
+		$this->db->bind("id", $transaksi_id);
+		$this->db->execute();
+
+		return $this->db->rowCount();
+	}
+	public function updateDataTransaksiTolak($transaksi_id)
+	{
+		$query = "UPDATE transaksi SET status_transaksi = :status_trans WHERE transaksi_id = :id";
+		$this->db->query($query);
+		$this->db->bind("status_trans", "failed");
+		$this->db->bind("id", $transaksi_id);
+		$this->db->execute();
+
+		return $this->db->rowCount();
 	}
 }
