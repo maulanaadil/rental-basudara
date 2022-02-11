@@ -26,14 +26,16 @@ class PlaystationModel
 
 	public function getCountPlaystationWhereTersedia()
 	{
-		$this->db->query('SELECT * FROM ' . $this->table . ' WHERE status_peminjaman="tersedia"');
-		return $this->db->columnCount();
+		$this->db->query('SELECT COUNT(*) as total FROM ' . $this->table . ' WHERE status_peminjaman="tersedia"');
+		$this->db->execute();
+		return $this->db->count();
 	}
 
 	public function getCountPlaystationWhereDipinjam()
 	{
-		$this->db->query('SELECT * FROM ' . $this->table . ' WHERE status_peminjaman="dipinjam"');
-		return $this->db->columnCount();
+		$this->db->query('SELECT COUNT(*) as total FROM ' . $this->table . ' WHERE status_peminjaman="dipinjam"');
+		$this->db->execute();
+		return $this->db->count();
 	}
 
 	public function getPlaystationTersediaByJenis($jenis)

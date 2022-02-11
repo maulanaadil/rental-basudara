@@ -43,7 +43,7 @@
             </thead>
             <tbody>
               <?php $no = 1; ?>
-              <?php foreach ($data['transaksi'] as $row) : ?>
+              <?php foreach ($data['transaksi'] as $row) { ?>
                 <tr>
                   <td><?= $no; ?></td>
                   <td><?= $row['nama']; ?></td>
@@ -53,35 +53,12 @@
                   <td><?= $row["tanggal_kembali"];  ?></td>
                   <td><?= $row["bukti_pembayaran"];  ?></td>
                   <td><?= $row["total"];  ?></td>
-                  <?php if ($row["status_transaksi"] == NULL) {
-                  ?>
-                    <td>
-                      <button type="button" class="btn btn-success"><a href="<?= base_url; ?>/transaksi/onaccept/<?= $row['transaksi_id'] ?>" style="text-decoration: none; color: inherit;">ACCEPT</a></button>
-                      <button type="button" class="btn btn-danger"><a href="<?= base_url; ?>/transaksi/ontolak/<?= $row['transaksi_id'] ?>" style="text-decoration: none; color: inherit;">TOLAK</a></button>
-                    </td>
-                  <?php } else {
-                  ?>
-                    <td>
-                      <?= strtoupper($row["status_transaksi"]); ?>
-                    </td>
-                  <?php }   ?>
-                </tr>
-              <?php $no++;
-              endforeach; ?>
-              <!-- <td>1</td>
-              <td>Abdul</td>
-              <td>abdul@gmail.com</td>
-              <td>Playstation 2</td>
-              <td>02 Februari 2022</td>
-              <td>02 Februari 2022</td>
-              <td>Gambar.png</td>
-              <td>Rp. 10.000</td>
-              <td>
-                <button type="button" class="btn btn-success">Accept</button>
-                <button type="button" class="btn btn-danger">Tolak</button>
-              </td> -->
-
-            </tbody>
+                  <?php  ?>
+                  <td>
+                    <button type="button" class="btn btn-success">Accept</button>
+                    <a href="<?= base_url; ?>/transaksi/tolak/<?= $row['transaksi_id'] ?>" class="btn btn-danger" onclick="return confirm('Tolak data?');">Tolak</a>
+                  </td>
+            </tbody> <?php } ?>
           </table>
         </div>
         <!-- /.card-body -->

@@ -66,7 +66,8 @@
                                   ?>
                                   "><?= strtoupper($row['status_peminjaman']);  ?></td>
                                   <td>
-                                      <a href="<?= base_url; ?>/playstation/edit/<?= $row['ps_id'] ?>" class="btn btn-info">Edit</a> <a href="<?= base_url; ?>/playstation/hapus/<?= $row['ps_id'] ?>" class="btn btn-danger" onclick="return confirm('Hapus data?');">Hapus</a>
+                                      <a href="<?= base_url; ?>/playstation/edit/<?= $row['ps_id'] ?>" class="btn btn-info">Edit</a> 
+                                      <a href="<?= base_url; ?>/playstation/hapus/<?= $row['ps_id'] ?>" class="btn btn-danger" onclick="return confirm('Hapus data?');">Hapus</a>
                                   </td>
                               </tr>
                           <?php $no++;

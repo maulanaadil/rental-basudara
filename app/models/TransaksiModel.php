@@ -66,24 +66,20 @@ class TransaksiModel
 		return $this->db->single();
 	}
 
-	public function updateDataTransaksiAccept($transaksi_id)
+	public function tolakTransaksi($id)
 	{
-		$query = "UPDATE transaksi SET status_transaksi = :status_trans WHERE transaksi_id = :id";
-		$this->db->query($query);
-		$this->db->bind("status_trans", "success");
-		$this->db->bind("id", $transaksi_id);
+		$this->db->query('DELETE FROM ' . $this->table . ' WHERE transaksi_id=:id');
+		$this->db->bind('id', $id);
 		$this->db->execute();
 
 		return $this->db->rowCount();
 	}
-	public function updateDataTransaksiTolak($transaksi_id)
-	{
-		$query = "UPDATE transaksi SET status_transaksi = :status_trans WHERE transaksi_id = :id";
-		$this->db->query($query);
-		$this->db->bind("status_trans", "failed");
-		$this->db->bind("id", $transaksi_id);
-		$this->db->execute();
 
-		return $this->db->rowCount();
+
+	public function getCountTransaksi()
+	{
+		$this->db->query('SELECT COUNT(*) as total FROM ' . $this->table);
+		$this->db->execute();
+		return $this->db->count();
 	}
 }

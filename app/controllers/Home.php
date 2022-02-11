@@ -15,6 +15,7 @@ class Home extends Controller
 		$data['title'] = 'Halaman Home';
 		$data['pst'] = $this->model('PlaystationModel')->getCountPlaystationWhereTersedia();
 		$data['psd'] = $this->model('PlaystationModel')->getCountPlaystationWhereDipinjam();
+		$data['transaksi'] = $this->model('TransaksiModel')->getCountTransaksi();
 		$this->view('templates/header', $data);
 		$this->view('templates/sidebar', $data);
 		$this->view('home/index', $data);
