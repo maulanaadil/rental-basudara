@@ -62,6 +62,16 @@ class TransaksiModel
 		return $this->db->single();
 	}
 
+	public function tolakTransaksi($id)
+	{
+		$this->db->query('DELETE FROM ' . $this->table . ' WHERE transaksi_id=:id');
+		$this->db->bind('id', $id);
+		$this->db->execute();
+
+		return $this->db->rowCount();
+	}
+
+
 	public function getCountTransaksi() 
 	{
 		$this->db->query('SELECT COUNT(*) as total FROM ' . $this->table );

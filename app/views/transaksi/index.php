@@ -52,9 +52,8 @@
                     <td>Rp. 10.000</td>
                     <td>
                         <button type="button" class="btn btn-success">Accept</button>
-                        <button type="button" class="btn btn-danger">Tolak</button>
+                        <a href="<?= base_url; ?>/transaksi/tolak/<?= $row['transaksi_id'] ?>" class="btn btn-danger" onclick="return confirm('Tolak data?');">Tolak</a>
                     </td>
-                  
                   </tbody>
                 </table>
         </div>

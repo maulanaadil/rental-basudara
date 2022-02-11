@@ -18,4 +18,17 @@ class Transaksi extends Controller
 		$this->view('transaksi/index', $data);
 		$this->view('templates/footer');
 	}
+
+	public function tolak($id)
+    {
+        if ($this->model('TransaksiModel')->tolakTransaksi($id) > 0) {
+            Flasher::setMessage('Berhasil', 'ditolak', 'success');
+            header('location: ' . base_url . '/transaksi');
+            exit;
+        } else {
+            Flasher::setMessage('Gagal', 'dihapus', 'danger');
+            header('location: ' . base_url . '/transaksi');
+            exit;
+        }
+    }
 }
