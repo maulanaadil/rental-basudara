@@ -63,6 +63,14 @@ class PlaystationModel
 		$this->db->execute();
 	}
 
+	public function jenisPlaystationTersedia()
+	{
+		$this->db->query("SELECT DISTINCT jenis FROM " . $this->table . " WHERE status_peminjaman = 'tersedia'");
+		$this->db->execute();
+
+		return $this->db->resultSet();
+	}
+
 	public function tambahPlaystation($data)
 	{
 		$queryId = "SELECT MAX(ps_id) AS max_ps_id FROM playstation;";

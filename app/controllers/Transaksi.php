@@ -13,6 +13,7 @@ class Transaksi extends Controller
 	public function index()
 	{
 		$data['title'] = 'Transaksi';
+		$data['transaksi'] = $this->model("TransaksiModel")->getAllTransaksi();
 		$this->view('templates/header', $data);
 		$this->view('templates/sidebar', $data);
 		$this->view('transaksi/index', $data);
@@ -20,15 +21,27 @@ class Transaksi extends Controller
 	}
 
 	public function tolak($id)
-    {
-        if ($this->model('TransaksiModel')->tolakTransaksi($id) > 0) {
-            Flasher::setMessage('Berhasil', 'ditolak', 'success');
-            header('location: ' . base_url . '/transaksi');
-            exit;
-        } else {
-            Flasher::setMessage('Gagal', 'dihapus', 'danger');
-            header('location: ' . base_url . '/transaksi');
-            exit;
-        }
-    }
+	{
+		if ($this->model('TransaksiModel')->tolakTransaksi($id) > 0) {
+			Flasher::setMessage('Berhasil', 'ditolak', 'success');
+			header('location: ' . base_url . '/transaksi');
+			exit;
+		} else {
+			Flasher::setMessage('Gagal', 'dihapus', 'danger');
+			header('location: ' . base_url . '/transaksi');
+			exit;
+		}
+	}
+	public function accept($id)
+	{
+		if ($this->model('TransaksiModel')->acceptTransaksi($id) > 0) {
+			Flasher::setMessage('Berhasil', 'diterima', 'success');
+			header('location: ' . base_url . '/transaksi');
+			exit;
+		} else {
+			Flasher::setMessage('Gagal', 'diterima', 'danger');
+			header('location: ' . base_url . '/transaksi');
+			exit;
+		}
+	}
 }

@@ -21,7 +21,7 @@ class CustomerModel
 		return $this->db->single();
 	}
 
-	public function tambahCustomer($data)
+	public function tambahCustomer($data, $files)
 	{
 		// Tambah Customer
 		$query = "INSERT INTO customer ( nama, no_hp, email) VALUES( :nama, :no_hp, :email)";
@@ -40,7 +40,7 @@ class CustomerModel
 		$data['customer_id'] = $customer_id;
 
 		// Menambahkan data baru ke tabel 'transaksi'
-		$this->transaksi->tambahTransaksi($data);
+		$this->transaksi->tambahTransaksi($data, $files);
 
 		return $this->db->rowCount();
 	}
