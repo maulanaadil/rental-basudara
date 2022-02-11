@@ -13,9 +13,23 @@ class Peminjaman extends Controller
 	public function index()
 	{
 		$data['title'] = 'Peminjaman';
+		$data['peminjaman'] = $this->model('PeminjamanModel')->getDataPeminjaman();
 		$this->view('templates/header', $data);
 		$this->view('templates/sidebar', $data);
 		$this->view('peminjaman/index', $data);
 		$this->view('templates/footer');
+	}
+
+	public function dipinjam($id)
+	{
+		if ($this->model('PeminjamanModel')->setStatusMenjadiDipinjam($id) > 0) {
+			Flasher::setMessage('Berhasil', 'diupdate', 'success');
+            header('location: ' . base_url . '/peminjaman');
+            exit;
+		} else {
+			Flasher::setMessage('Gagal', 'diupdate', 'danger');
+            header('location: ' . base_url . '/peminjaman');
+            exit;
+		}
 	}
 }

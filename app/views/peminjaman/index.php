@@ -41,18 +41,23 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <td>1</td>
-                    <td>Abdul</td>
-                    <td>abdul@gmail.com</td>
-                    <td>Playstation 2</td>
-                    <td>02 Februari 2022</td>
-                    <td>02 Februari 2022</td>
-                    <td>Success</td>
-                    <td>
-                        <button type="button" class="btn btn-success">Dipinjamkan</button>
-                        <button type="button" class="btn btn-danger">Hapus</button>
-                    </td>
-                  
+                    <?php 
+                    $no = 1;
+                    foreach ($data['peminjaman'] as $row) : ?>
+                    <tr>
+                      <td><?= $no; ?></td>
+                      <td><?= $row['nama'] ?></td>
+                      <td><?= $row['email'] ?></td>
+                      <td><?= $row['jenis'] ?></td>
+                      <td><?= $row['tanggal_pinjam'] ?></td>
+                      <td><?= $row['tanggal_kembali'] ?></td>
+                      <td><?= $row['status'] ?></td>
+                      <td>
+                        <a href="<?= base_url; ?>/peminjaman/dipinjam/<?= $row['ps_id'] ?>" class="btn btn-success">Dipinjamkan</a>
+                      </td>
+                    </tr>
+                  <?php $no++;
+                    endforeach; ?>
                   </tbody>
                 </table>
         </div>

@@ -42,18 +42,32 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <td>1</td>
-                    <td>Abdul</td>
-                    <td>abdul@gmail.com</td>
-                    <td>Playstation 2</td>
-                    <td>02 Februari 2022</td>
-                    <td>02 Februari 2022</td>
-                    <td>Rp. 10.000</td>
-                    <td>Dipinjam</td>
-                    <td>
-                        <button type="button" class="btn btn-warning">Dikembalikan</button>
-                    </td>
-                  
+                    <tr>
+                      <?php
+                      $no = 1;
+                      foreach ($data['pengembalian'] as $row) :
+                      ?>
+                      <td><?= $no; ?></td>
+                      <td><?= $row['nama']?></td>
+                      <td><?= $row['email']?></td>
+                      <td><?= $row['jenis']?></td>
+                      <td><?= $row['tanggal_pinjam']?></td>
+                      <td><?= $row['tanggal_kembali']?></td>
+                      <td>Rp. <?php 
+                      if ($row['denda'] == null)  {
+                          echo number_format(0, 2,',','.');
+                      } else {
+                        echo number_format($row['denda'], 2,',','.');
+                      }   
+                      ?></td>
+                      <td><?= $row['status_peminjaman']?></td>
+                      <td>
+                          <a href="<?= base_url; ?>/pengembalian/dikembalikan/<?= $row['ps_id'] ?>" class="btn btn-warning">Dikembalikan</a>
+                      </td>
+                    </tr>
+                    <?php 
+                    $no++; 
+                    endforeach; ?>
                   </tbody>
                 </table>
         </div>
