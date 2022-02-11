@@ -5,7 +5,7 @@
           <div class="container-fluid">
               <div class="row mb-2">
                   <div class="col-sm-6">
-                      <h1>Halaman Playstation</h1>
+                      <h1>Halaman <?= $data['title'] ?></h1>
                   </div>
               </div>
           </div><!-- /.container-fluid -->
@@ -22,11 +22,8 @@
           </div>
           <!-- Default box -->
           <div class="card">
-              <div class="card-header">
-                  <h3 class="card-title"><?= $data['title'] ?></h3>
-                  <div class="btn-group float-right"><a href="<?= base_url; ?>/playstation/tambah" class="btn float-right btn-xs btn btn-primary">Tambah Playstation</a></div>
-              </div>
-              <div class="card-body">
+                  <div class="card-body">
+                    <div class="btn-group mb-3 float-right"><a href="<?= base_url; ?>/playstation/tambah" class="btn float-right btn btn-primary">Tambah Playstation</a></div>
 
                   <!-- <form action="<?= base_url; ?>/playstation/cari" method="post">
                       <div class="row mb-3">
@@ -46,10 +43,10 @@
                       <thead>
                           <tr>
                               <th style="width: 10px">#</th>
-                              <th>Jenis</th>
-                              <th>Harga</th>
-                              <th>Status Peminjaman</th>
-                              <th style="width: 150px">Action</th>
+                              <th class="text-center">Jenis Playstation</th>
+                              <th class="text-center">Harga</th>
+                              <th class="text-center">Status Peminjaman</th>
+                              <th class="text-center" style="width: 150px">Action</th>
                           </tr>
                       </thead>
                       <tbody>
@@ -58,10 +55,18 @@
                               <tr>
                                   <td><?= $no; ?></td>
                                   <td><?= $row['jenis']; ?></td>
-                                  <td align="right"><?= $row['harga']; ?></td>
-                                  <td><?= strtoupper($row['status_peminjaman']);  ?></td>
+                                  <td class="text-right">Rp. <?= number_format($row['harga'], 2,',','.'); ?></td>
+                                  <td class="text-center
+                                  <?php 
+                                    if ($row['status_peminjaman'] == "tersedia") {
+                                        ?> text-success <?php
+                                    } else {
+                                        ?> text-warning <?php
+                                    } 
+                                  ?>
+                                  "><?= strtoupper($row['status_peminjaman']);  ?></td>
                                   <td>
-                                      <a href="<?= base_url; ?>/playstation/edit/<?= $row['ps_id'] ?>" class="badge badge-info">Edit</a> <a href="<?= base_url; ?>/playstation/hapus/<?= $row['ps_id'] ?>" class="badge badge-danger" onclick="return confirm('Hapus data?');">Hapus</a>
+                                      <a href="<?= base_url; ?>/playstation/edit/<?= $row['ps_id'] ?>" class="btn btn-info">Edit</a> <a href="<?= base_url; ?>/playstation/hapus/<?= $row['ps_id'] ?>" class="btn btn-danger" onclick="return confirm('Hapus data?');">Hapus</a>
                                   </td>
                               </tr>
                           <?php $no++;
@@ -70,10 +75,6 @@
                   </table>
               </div>
               <!-- /.card-body -->
-              <div class="card-footer">
-                  Footer
-              </div>
-              <!-- /.card-footer-->
           </div>
           <!-- /.card -->
 

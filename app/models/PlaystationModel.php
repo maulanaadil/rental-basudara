@@ -24,28 +24,16 @@ class PlaystationModel
 		return $this->db->single();
 	}
 
-	public function getAllPlaystationWhereTersedia()
-	{
-		$this->db->query('SELECT * FROM ' . $this->table . ' WHERE status_peminjaman="tersedia"');
-		return $this->db->resultSet();
-	}
-
-	public function getAllPlaystationWhereDipinjam()
-	{
-		$this->db->query('SELECT * FROM ' . $this->table . ' WHERE status_peminjaman="dipinjam"');
-		return $this->db->resultSet();
-	}
-
 	public function getCountPlaystationWhereTersedia()
 	{
-		$this->db->query('SELECT COUNT(ps_id) as total_tersedia FROM' . $this->table . ' WHERE status_peminjaman = "tersedia"');
-		return $this->db->resultSet();
+		$this->db->query('SELECT * FROM ' . $this->table . ' WHERE status_peminjaman="tersedia"');
+		return $this->db->columnCount();
 	}
 
 	public function getCountPlaystationWhereDipinjam()
 	{
-		$this->db->query('SELECT COUNT(ps_id) as total_dipinjam FROM ' . $this->table . ' WHERE status_peminjaman = "dipinjam"');
-		return $this->db->resultSet();
+		$this->db->query('SELECT * FROM ' . $this->table . ' WHERE status_peminjaman="dipinjam"');
+		return $this->db->columnCount();
 	}
 
 	public function getPlaystationTersediaByJenis($jenis)

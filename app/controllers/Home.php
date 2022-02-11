@@ -13,6 +13,8 @@ class Home extends Controller
 	public function index()
 	{
 		$data['title'] = 'Halaman Home';
+		$data['pst'] = $this->model('PlaystationModel')->getCountPlaystationWhereTersedia();
+		$data['psd'] = $this->model('PlaystationModel')->getCountPlaystationWhereDipinjam();
 		$this->view('templates/header', $data);
 		$this->view('templates/sidebar', $data);
 		$this->view('home/index', $data);
