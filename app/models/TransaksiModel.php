@@ -61,4 +61,11 @@ class TransaksiModel
 
 		return $this->db->single();
 	}
+
+	public function getCountTransaksi() 
+	{
+		$this->db->query('SELECT COUNT(*) as total FROM ' . $this->table );
+		$this->db->execute();
+		return $this->db->count();
+	}
 }
