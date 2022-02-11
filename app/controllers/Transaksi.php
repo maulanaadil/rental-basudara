@@ -32,4 +32,16 @@ class Transaksi extends Controller
 			exit;
 		}
 	}
+	public function accept($id)
+	{
+		if ($this->model('TransaksiModel')->acceptTransaksi($id) > 0) {
+			Flasher::setMessage('Berhasil', 'diterima', 'success');
+			header('location: ' . base_url . '/transaksi');
+			exit;
+		} else {
+			Flasher::setMessage('Gagal', 'diterima', 'danger');
+			header('location: ' . base_url . '/transaksi');
+			exit;
+		}
+	}
 }

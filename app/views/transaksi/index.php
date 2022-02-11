@@ -51,11 +51,11 @@
                   <td><?= $row["jenis"];  ?></td>
                   <td><?= $row["tanggal_pinjam"];  ?></td>
                   <td><?= $row["tanggal_kembali"];  ?></td>
-                  <td><?= $row["bukti_pembayaran"];  ?></td>
+                  <td><img style="max-width: 120px; max-height: 120px; object-fit: cover;" src="http://localhost/rental-basudara/app/assets/uploads/<?= $row["bukti_pembayaran"];  ?>" alt="<?= $row["bukti_pembayaran"];  ?>" /></td>
                   <td><?= $row["total"];  ?></td>
                   <?php  ?>
                   <td>
-                    <button type="button" class="btn btn-success">Accept</button>
+                    <a href="<?= base_url; ?>/transaksi/accept/<?= $row['transaksi_id'] ?>" class="btn btn-success">Accept</a>
                     <a href="<?= base_url; ?>/transaksi/tolak/<?= $row['transaksi_id'] ?>" class="btn btn-danger" onclick="return confirm('Tolak data?');">Tolak</a>
                   </td>
             </tbody> <?php } ?>
