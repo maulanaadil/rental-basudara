@@ -28,12 +28,12 @@
             </div>
         </div><!-- /.container-fluid -->
     </section>
-
     <!-- Main content -->
     <section class="container">
         <div class="row justify-content-center">
             <div class="card">
                 <div class="card-body">
+                    <?= Flasher::MessagePelanggan() ?>
                     <form action="<?= base_url; ?>/customer/simpancustomer" method="POST" enctype="multipart/form-data">
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
@@ -62,11 +62,25 @@
                             </div>
                             <select class="custom-select" id="jenis-playstation" name="jenis-playstation">
                                 <option selected>Pilih Playstation</option>
+                                <?php
+                                $i = 0;
+                                foreach ($data['ps'] as $ps) {
+                                ?>
+                                    <option value="<?= $ps['jenis'] ?>"><?= $ps['jenis'] ?></option>
+                                <?php  } ?>
+                            </select>
+                        </div>
+                        <!-- <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <label class="input-group-text" for="jenis-playstation">Jenis Playstation</label>
+                            </div>
+                            <select class="custom-select" id="jenis-playstation" name="jenis-playstation">
+                                <option selected>Pilih Playstation</option>
                                 <option value="Playstation 3">Playstation 3</option>
                                 <option value="Playstation 4">Playstation 4</option>
                                 <option value="Playstation 5">Playstation 5</option>
                             </select>
-                        </div>
+                        </div> -->
 
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
@@ -84,8 +98,7 @@
 
                         <div class="input-group mb-3">
                             <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="upload" name="bukti_pembayaran" required
-                                aria-describedby="upload">
+                                <input type="file" class="custom-file-input" id="upload" name="bukti_pembayaran" required aria-describedby="upload">
                                 <label class="custom-file-label" for="inputGroupFile01">Upload Bukti Pembayaran</label>
                             </div>
                         </div>
