@@ -23,7 +23,6 @@
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2 justify-content-center d-block">
-                <img sr="./public/asseets/logo.png" alt="Ini ceritanya gambar" class="img-fluid w-100">
                 <h4 class="h5 text-center font-weight-light">Silahkan memilih jenis Playstation dan tanggal penyewaannya <br />lalu isi identitas anda. </h3>
             </div>
         </div><!-- /.container-fluid -->
