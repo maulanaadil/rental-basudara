@@ -45,7 +45,7 @@
               <?php $no = 1; ?>
               <?php foreach ($data['transaksi'] as $row) { ?>
                 <tr>
-                  <td><?= $no; ?></td>
+                  <td><?= $no++; ?></td>
                   <td><?= $row['nama']; ?></td>
                   <td><?= $row['email']; ?></td>
                   <td><?= $row["jenis"];  ?></td>
