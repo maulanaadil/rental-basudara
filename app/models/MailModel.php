@@ -19,8 +19,8 @@ class MailModel
         $this->mail->Host = 'smtp.mailtrap.io';
         $this->mail->SMTPAuth = true;
         $this->mail->Port = 2525;
-        $this->mail->Username = 'b5d94728645ebc';
-        $this->mail->Password = '21f5c1e1410a20';
+        $this->mail->Username = '';
+        $this->mail->Password = '';
     }
 
     public function sendMailAccept($data, $type)
