@@ -1,4 +1,5 @@
 rental_basudara.sql
-app/lib
-app/assets
 *.bak
+*.jpeg
+*.png
+*.jpg

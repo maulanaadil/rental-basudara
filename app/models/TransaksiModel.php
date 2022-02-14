@@ -6,11 +6,12 @@ class TransaksiModel
 	private $table = 'transaksi';
 	private $db;
 	private $playstation;
+	private $mail;
 
 	public function __construct()
 	{
 		require_once(__DIR__ . '/PlaystationModel.php');
-		$this->playstation = new PlaystationModel;
+		require_once(__DIR__ . '/MailModel.php');
 		$this->db = new Database;
 	}
 
@@ -26,14 +27,24 @@ class TransaksiModel
 
 	public function getTransaksiById($transaksi_id)
 	{
-		$this->db->query('SELECT * FROM ' . $this->table . 'WHERE transaksi_id:=transaksi_id');
+		$this->db->query('SELECT transaksi.transaksi_id, transaksi.tanggal_pinjam, transaksi.tanggal_kembali, transaksi.total, transaksi.status_transaksi, transaksi.bukti_pembayaran, transaksi.total, customer.nama, customer.email, playstation.jenis
+		FROM transaksi
+		INNER JOIN customer ON transaksi.customer_id = customer.customer_id
+		INNER JOIN playstation ON transaksi.ps_id = playstation.ps_id WHERE transaksi.transaksi_id=:transaksi_id');
 		$this->db->bind('transaksi_id', $transaksi_id);
 		return $this->db->single();
 	}
+	// public function getTransaksiById($transaksi_id)
+	// {
+	// 	$this->db->query('SELECT * FROM ' . $this->table . 'WHERE transaksi_id:=transaksi_id');
+	// 	$this->db->bind('transaksi_id', $transaksi_id);
+	// 	return $this->db->single();
+	// }
 
 	public function tambahTransaksi($data, $file)
 	{
 		// Menentukan perbedaan berapa hari dari 'tanggal' dan 'tanggal_kembali'
+		$this->playstation = new PlaystationModel;
 		$date1 = new DateTime($data['tanggal']);
 		$date2 = new DateTime($data['tanggal_kembali']);
 		$interval = $date1->diff($date2);
@@ -75,19 +86,38 @@ class TransaksiModel
 
 	public function tolakTransaksi($id)
 	{
-		$this->db->query('DELETE FROM ' . $this->table . ' WHERE transaksi_id=:id');
-		$this->db->bind('id', $id);
-		$this->db->execute();
 
-		return $this->db->rowCount();
+		$this->mail = new MailModel;
+		$data = $this->getTransaksiById($id);
+		$send = $this->mail->sendMailAccept($data, 'tolak');
+		if ($send['status'] == 1) {
+
+			$this->db->query('DELETE FROM ' . $this->table . ' WHERE transaksi_id=:id');
+			$this->db->bind('id', $id);
+			$this->db->execute();
+			return $send;
+		} else {
+			return $send;
+		}
+
+		return 0;
 	}
 	public function acceptTransaksi($id)
 	{
-		$this->db->query("UPDATE " . $this->table . " SET `status_transaksi` = 'success'  WHERE transaksi_id=:id");
-		$this->db->bind('id', $id);
-		$this->db->execute();
+		$this->mail = new MailModel;
+		$data = $this->getTransaksiById($id);
+		$send = $this->mail->sendMailAccept($data, 'accept');
+		if ($send['status'] == 1) {
+			$this->db->query("UPDATE " . $this->table . " SET `status_transaksi` = 'success'  WHERE transaksi_id=:id");
+			$this->db->bind('id', $id);
+			$this->db->execute();
+			return $send;
+		} else {
+			return $send;
+		}
 
-		return $this->db->rowCount();
+
+		return 0;
 	}
 
 

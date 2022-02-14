@@ -22,7 +22,8 @@ class Transaksi extends Controller
 
 	public function tolak($id)
 	{
-		if ($this->model('TransaksiModel')->tolakTransaksi($id) > 0) {
+		$status = $this->model('TransaksiModel')->tolakTransaksi($id);
+		if ($status['status'] > 0) {
 			Flasher::setMessage('Berhasil', 'ditolak', 'success');
 			header('location: ' . base_url . '/transaksi');
 			exit;
@@ -34,7 +35,8 @@ class Transaksi extends Controller
 	}
 	public function accept($id)
 	{
-		if ($this->model('TransaksiModel')->acceptTransaksi($id) > 0) {
+		$status = $this->model('TransaksiModel')->acceptTransaksi($id);
+		if ($status['status'] > 0) {
 			Flasher::setMessage('Berhasil', 'diterima', 'success');
 			header('location: ' . base_url . '/transaksi');
 			exit;
