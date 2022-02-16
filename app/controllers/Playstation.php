@@ -13,16 +13,6 @@ class Playstation extends Controller
         $this->view('playstation/index', $data);
         $this->view('templates/footer');
     }
-    public function cari()
-    {
-        $data['title'] = 'Data Playstation';
-        $data['Playstation'] = $this->model('PlaystationModel')->cariPlaystation();
-        $data['key'] = $_POST['key'];
-        $this->view('templates/header', $data);
-        $this->view('templates/sidebar', $data);
-        $this->view('playstation/index', $data);
-        $this->view('templates/footer');
-    }
     public function edit($id)
     {
 
